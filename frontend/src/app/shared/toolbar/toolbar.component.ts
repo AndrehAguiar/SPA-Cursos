@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AlunosComponent } from 'src/app/alunos/alunos.component';
+import { AlunosService } from 'src/app/alunos/alunos.component.service';
+import { HomeComponent } from 'src/app/home/home.component';
 
 @Component({
   selector: 'spa-toolbar',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  showOptions!: boolean;
+  @Input() page!: string;
+
+  constructor(private home: HomeComponent) { 
+    this.home = home;
+  }
 
   ngOnInit(): void {
   }
 
+  showHideOptions():void{
+    this.showOptions = !this.showOptions ? true : false;
+  }
+
+  goToPage(page:string):void{
+    this.home.page = page;
+    this.showHideOptions();
+  }
 }

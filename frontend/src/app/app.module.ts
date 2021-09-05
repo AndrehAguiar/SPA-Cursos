@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,6 +10,16 @@ import {MatIconModule} from '@angular/material/icon';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { AlunosService } from './alunos/alunos.component.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AlunosFormComponent } from './alunos/alunos-form/alunos-form.component';
+import { AlunosTableComponent } from './alunos/alunos-table/alunos-table.component';
+import { CursosComponent } from './cursos/cursos.component';
+import { CursosFormComponent } from './cursos/cursos-form/cursos-form.component';
+import { CursosTableComponent } from './cursos/cursos-table/cursos-table.component';
+import { ProfessoresComponent } from './professores/professores.component';
+import { ProfessoresTableComponent } from './professores/professores-table/professores-table.component';
+import { ProfessoresFormComponent } from './professores/professores-form/professores-form.component';
 
 @NgModule({
   declarations: [
@@ -17,16 +27,26 @@ import { FooterComponent } from './shared/footer/footer.component';
     HomeComponent,
     ToolbarComponent,
     AlunosComponent,
-    FooterComponent
+    FooterComponent,
+    AlunosFormComponent,
+    AlunosTableComponent,
+    CursosComponent,
+    CursosFormComponent,
+    CursosTableComponent,
+    ProfessoresComponent,
+    ProfessoresTableComponent,
+    ProfessoresFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AlunosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,28 @@
+<table class="table table-striped table-bordered mt-2 align-middle">
+
+    <caption class="caption-top fs-4"> Cursos cadastrados </caption>
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th class="text-center" scope="col">Duração</th>
+            <th class="text-center" scope="col">Teachers</th>
+            <th scope="col">Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let curso of courses">
+            <td>{{curso.name}}</td>
+            <td class="text-center">{{curso.duration}} H.</td>
+            <td class="text-center">
+                <button class="btn btn-primary" (click)="showHideTeachers(curso)">View Teachers</button>
+                <button class="btn btn-outline-primary" (click)="addCourseTeacher(curso)">Add Teacher</button>
+            </td>
+            <td class="text-center">
+                <button class="btn btn-warning" *ngIf="newCourse" (click)="addToAluno(curso)" [disabled]="chkAlunoCourses(curso)">Matricular no Curso</button>
+                <button class="btn btn-warning" *ngIf="!newCourse">Editar</button>
+                <button class="btn btn-danger" *ngIf="!newCourse">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<spa-professores-table *ngIf="showTeachers" [teachers]="teachers" [newTeacher]="newTeacher" [addToCourse]="addToCourse" [chkCourseTeachers]="chkCourseTeachers"></spa-professores-table>

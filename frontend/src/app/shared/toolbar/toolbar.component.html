@@ -1,13 +1,26 @@
 <mat-toolbar>
-    <button mat-icon-button class="btn btn-light me-2 pb-0" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
+
+    <button mat-icon-button class="btn btn-light me-2 pb-0" aria-label="Example icon-button with menu icon" (click)="showHideOptions()">
+      <mat-icon (mouseover)="showOptions = true">menu</mat-icon>
     </button>
     <span>My App</span>
+
     <span class="example-spacer"></span>
+
     <button mat-icon-button class="btn btn-light favorite-icon pb-0" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
     </button>
+
     <button mat-icon-button class="btn btn-light ms-2 pb-0" aria-label="Example icon-button with share icon">
      <mat-icon>share</mat-icon>
    </button>
+
 </mat-toolbar>
+
+<div class="col-2 p-2 position-fixed bg-dark d-flex flex-column" *ngIf="showOptions" (mouseover)="showOptions = true">
+
+    <span class="text-light text-start p-2 border-end border-bottom btn" (click)="goToPage('aluno')">Alunos</span>
+    <span class="text-light text-start p-2 border-end border-bottom btn" (click)="goToPage('curso')">Cursos</span>
+    <span class="text-light text-start p-2 border-end border-bottom btn" (click)="goToPage('professor')">Professor</span>
+
+</div>
